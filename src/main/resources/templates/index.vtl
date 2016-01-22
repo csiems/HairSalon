@@ -1,1 +1,23 @@
-<h1>Pick a Stylist</h1>
+
+
+<table class="table table-hover sortable" id="stylistTable">
+  <thead>
+    <tr>
+      <th>Appointment Book:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      #foreach ($stylist in $stylists)
+      <td><a href="/index/$stylist.getId()">$stylist.getName()</a></td>
+    </tr>
+      #end
+  </tbody>
+</table>
+
+
+<ul class="navigation">
+  <li><a href="/newstylist">Add A New Stylist</a></li>
+  <li><a href="/assignments">View Client Assignments</a></li>
+  <li><a href="/newappointment">Make An Appointment</a></li>
+</ul>

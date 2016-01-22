@@ -1,0 +1,6 @@
+ul.navigation {
+  display: block;
+  text-decoration: none;
+  list-style-type: none;
+  padding: .25em;
+}
