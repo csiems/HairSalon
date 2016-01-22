@@ -40,45 +40,40 @@ public class AppTest extends FluentTest {
        assertThat(pageSource()).contains("Paul Mitchell");
      }
 
-    //  @Test
-    //  public void multipleCategoriesAreCreated() {
-    //    Category myCategory = new Category("Household chores");
-    //    myCategory.save();
-    //    Category mySecondCategory = new Category("Grocery shopping");
-    //    mySecondCategory.save();
-    //    goTo("http://localhost:4567/categories");
-    //    assertThat(pageSource()).contains("Household chores");
-    //    assertThat(pageSource()).contains("Grocery shopping");
-    //  }
-     //
-    //  @Test
-    //  public void taskIsCreatedTest() {
-    //    goTo("http://localhost:4567/");
-    //    click("a", withText("Add a New Category"));
-    //    fill("#name").with("Household chores");
-    //    submit(".btn");
-    //    click("a", withText("Household chores"));
-    //    click("a", withText("Add a new task"));
-    //    fill("#description").with("Sweep floor");
-    //    submit(".btn");
-    //    assertThat(pageSource()).contains("Sweep floor");
-    //  }
-     //
-    //  @Test
-    //  public void multipleTasksAreCreatedTest() {
-    //    goTo("http://localhost:4567/");
-    //    click("a", withText("Add a New Category"));
-    //    fill("#name").with("Household chores");
-    //    submit(".btn");
-    //    click("a", withText("Household chores"));
-    //    click("a", withText("Add a new task"));
-    //    fill("#description").with("Sweep floor");
-    //    submit(".btn");
-    //    click("a", withText("Add a new task"));
-    //    fill("#description").with("Vacuum the rug");
-    //    submit(".btn");
-    //    assertThat(pageSource()).contains("Sweep floor");
-    //    assertThat(pageSource()).contains("Vacuum the rug");
-    //  }
+     @Test
+     public void multipleStylistsAreCreated() {
+       Stylist myStylist = new Stylist("Paul Mitchell");
+       myStylist.save();
+       Stylist mySecondStylist = new Stylist("José Eber");
+       mySecondStylist.save();
+       goTo("http://localhost:4567/");
+       assertThat(pageSource()).contains("Paul Mitchell");
+       assertThat(pageSource()).contains("José Eber");
+     }
+
+     @Test
+     public void clientIsCreatedTest() {
+       Stylist myStylist = new Stylist("Paul Mitchell");
+       myStylist.save();
+       goTo("http://localhost:4567/");
+       click("a", withText("Paul Mitchell"));
+       click("a", withText("Make An Appointment"));
+       fill("#newClientName").with("Chloe Kardashian");
+       submit(".btn");
+       assertThat(pageSource()).contains("Chloe Kardashian");
+     }
+
+     @Test
+     public void multipleTasksAreCreatedTest() {
+       Stylist myStylist = new Stylist("Paul Mitchell");
+       myStylist.save();
+       Client firstClient = new Client("Chloe Kardashian", myStylist.getId());
+       firstClient.save();
+       Client secondClient = new Client("Kim Kardashian", myStylist.getId());
+       secondClient.save();
+       goTo("http://localhost:4567/" + myStylist.getId());
+       assertThat(pageSource()).contains("Chloe Kardashian");
+       assertThat(pageSource()).contains("Kim Kardashian");
+     }
 
 }

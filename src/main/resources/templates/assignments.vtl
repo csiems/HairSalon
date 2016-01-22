@@ -1,0 +1,19 @@
+#foreach ($stylist in $stylists)
+  <table class="table table-hover sortable" id="$stylist.getName()">
+    <thead>
+      <tr>
+        <th>$stylist.getName()</th>
+      </tr>
+    </thead>
+    <tbody>
+        #foreach ($client in $clients)
+          #if ($client.getStylistName().equals($stylist.getName()))
+          <tr>
+            <td>$client.getName()</td>
+          </tr>
+          #end
+        #end
+    </tbody>
+  </table>
+  <br>
+#end

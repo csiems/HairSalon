@@ -1,5 +1,3 @@
-
-
 <table class="table table-hover sortable" id="stylistTable">
   <thead>
     <tr>
@@ -9,7 +7,7 @@
   <tbody>
     <tr>
       #foreach ($stylist in $stylists)
-      <td><a href="/index/$stylist.getId()">$stylist.getName()</a></td>
+      <td><a href="/$stylist.getId()">$stylist.getName()</a></td>
     </tr>
       #end
   </tbody>
@@ -18,6 +16,5 @@
 
 <ul class="navigation">
   <li><a href="/newstylist">Add A New Stylist</a></li>
-  <li><a href="/assignments">View Client Assignments</a></li>
-  <li><a href="/newappointment">Make An Appointment</a></li>
+  <li><a href="/index/assignments">View Client Assignments</a></li>
 </ul>
