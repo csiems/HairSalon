@@ -17,29 +17,29 @@
 #end
 
 
-#if($stylist.getClients())
-<ul class="navigation">
-  <li><a href="/$stylist.getId()/newappointment">Make An Appointment With $stylist.getName()</a></li>
-  <li><a href="">You will not be able to remove $stylist.getName() unless clients are removed.</a></li>
-  <li><a href="/">Go to Main Page</a></li>
-</ul>
-<form action="/$stylist.getId()/update" method="post" >
-  <label for="updatedName">Change $stylist.getName()'s name here:</label>
-  <input id="updatedName" name="updatedName" type="text">
-  <button type="submit" class="btn btn-info">Update</button>
-</form>
+#if($stylist.getClients().isEmpty())
+  <ul class="navigation">
+    <li><a href="/$stylist.getId()/newappointment">Make An Appointment With $stylist.getName()</a></li>
+    <li><a href="/">Go to Main Page</a></li>
+  </ul>
+  <form action="/$stylist.getId()/update" method="post" >
+    <label for="updatedName">Change $stylist.getName()'s name here:</label>
+    <input id="updatedName" name="updatedName" type="text">
+    <button type="submit" class="btn btn-info">Update</button>
+  </form>
+  <br>
+  <form action="/$stylist.getId()/delete" class="form-horizontal" method="post">
+    <button type="submit" class="btn btn-danger">DELETE!</button>
+  </form>
 #else
-<ul class="navigation">
-  <li><a href="/$stylist.getId()/newappointment">Make An Appointment With $stylist.getName()</a></li>
-  <li><a href="/">Go to Main Page</a></li>
-</ul>
-<form action="/$stylist.getId()/update" method="post" >
-  <label for="updatedName">Change $stylist.getName()'s name here:</label>
-  <input id="updatedName" name="updatedName" type="text">
-  <button type="submit" class="btn btn-info">Update</button>
-</form>
-<br>
-<form action="/$stylist.getId()/delete" class="form-horizontal" method="post">
-  <button type="submit" class="btn btn-danger">DELETE!</button>
-</form>
+  <ul class="navigation">
+    <li><a href="/$stylist.getId()/newappointment">Make An Appointment With $stylist.getName()</a></li>
+    <li><a href="">You will not be able to remove $stylist.getName() unless clients are removed.</a></li>
+    <li><a href="/">Go to Main Page</a></li>
+  </ul>
+  <form action="/$stylist.getId()/update" method="post" >
+    <label for="updatedName">Change $stylist.getName()'s name here:</label>
+    <input id="updatedName" name="updatedName" type="text">
+    <button type="submit" class="btn btn-info">Update</button>
+  </form>
 #end
