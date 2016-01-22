@@ -8,43 +8,59 @@ public class StylistTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void all_emptyAtFirst() {
-  //   assertEquals(Category.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void equals_returnsTrueIfNamesAreTheSame() {
-  //   Category firstCategory = new Category("Household chores");
-  //   Category secondCategory = new Category("Household chores");
-  //   assertTrue(firstCategory.equals(secondCategory));
-  // }
-  //
-  // @Test
-  // public void save_savesIntoDatabase_true() {
-  //   Category myCategory = new Category("Household chores");
-  //   myCategory.save();
-  //   assertTrue(Category.all().get(0).equals(myCategory));
-  // }
-  //
-  // @Test
-  //   public void find_findCategoryInDatabase_true() {
-  //     Category myCategory = new Category("Household chores");
-  //     myCategory.save();
-  //     Category savedCategory = Category.find(myCategory.getId());
-  //     assertTrue(myCategory.equals(savedCategory));
-  //   }
-  //
-  // @Test
-  //   public void getTasks_retrievesAllTasksFromDatabase_tasksList() {
-  //     Category myCategory = new Category("Household chores");
-  //     myCategory.save();
-  //     Task firstTask = new Task("Mow the lawn", myCategory.getId());
-  //     firstTask.save();
-  //     Task secondTask = new Task("Do the dishes", myCategory.getId());
-  //     secondTask.save();
-  //     Task[] tasks = new Task[] { firstTask, secondTask };
-  //     assertTrue(myCategory.getTasks().containsAll(Arrays.asList(tasks)));
-  //   }
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Stylist.all().size(), 0);
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame() {
+    Stylist firstStylist = new Stylist("José Eber");
+    Stylist secondStylist = new Stylist("José Eber");
+    assertTrue(firstStylist.equals(secondStylist));
+  }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Stylist myStylist = new Stylist("José Eber");
+    myStylist.save();
+    assertTrue(Stylist.all().get(0).equals(myStylist));
+  }
+
+  @Test
+  public void find_findStylistInDatabase_true() {
+    Stylist myStylist = new Stylist("José Eber");
+    myStylist.save();
+    Stylist savedStylist = Stylist.find(myStylist.getId());
+    assertTrue(myStylist.equals(savedStylist));
+  }
+
+  @Test
+  public void update_changesStylistInDatabase_true() {
+    Stylist myStylist = new Stylist("José Eber");
+    myStylist.save();
+    myStylist.update("Paul Mitchell");
+    assertEquals("Paul Mitchell", myStylist.getName());
+  }
+
+  @Test
+  public void delete_removesStylistInDatabase_true() {
+    Stylist myStylist = new Stylist("José Eber");
+    myStylist.save();
+    myStylist.delete();
+    assertEquals(0, Stylist.all().size());
+  }
+
+    // @Test
+    //   public void getClients_retrievesAllClientsFromDatabase_clientsList() {
+    //     Stylist myStylist = new Stylist("José Eber");
+    //     myStylist.save();
+    //     Client firstClient = new Client("Kim Kardashian", myStylist.getId());
+    //     firstClient.save();
+    //     Client secondClient = new Client("Chloe Kardashian", myStylist.getId());
+    //     secondClient.save();
+    //     Client[] clients = new Client[] { firstClient, secondClient };
+    //     assertTrue(myStylist.getClients().containsAll(Arrays.asList(clients)));
+    //   }
 
 }
