@@ -58,21 +58,21 @@ public class AppTest extends FluentTest {
        goTo("http://localhost:4567/");
        click("a", withText("Paul Mitchell"));
        click("a", withText("Make An Appointment"));
-       fill("#newClientName").with("Chloe Kardashian");
+       fill("#newClientName").with("Khloe Kardashian");
        submit(".btn");
-       assertThat(pageSource()).contains("Chloe Kardashian");
+       assertThat(pageSource()).contains("Khloe Kardashian");
      }
 
      @Test
      public void multipleTasksAreCreatedTest() {
        Stylist myStylist = new Stylist("Paul Mitchell");
        myStylist.save();
-       Client firstClient = new Client("Chloe Kardashian", myStylist.getId());
+       Client firstClient = new Client("Khloe Kardashian", myStylist.getId());
        firstClient.save();
        Client secondClient = new Client("Kim Kardashian", myStylist.getId());
        secondClient.save();
        goTo("http://localhost:4567/" + myStylist.getId());
-       assertThat(pageSource()).contains("Chloe Kardashian");
+       assertThat(pageSource()).contains("Khloe Kardashian");
        assertThat(pageSource()).contains("Kim Kardashian");
      }
 

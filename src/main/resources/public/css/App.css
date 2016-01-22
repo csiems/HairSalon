@@ -1,6 +1,26 @@
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(../img/salonimage.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+.no-decoration:hover, .no-decoration:visited, .no-decoration:link, .no-decoration:active
+{
+    text-decoration: none;
+}
+
 ul.navigation {
   display: block;
   text-decoration: none;
   list-style-type: none;
   padding: .25em;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
