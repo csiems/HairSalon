@@ -18,6 +18,7 @@
 
 
 #if($stylist.getClients().isEmpty())
+  <h2>No clients assigned.</h2>
   <ul class="navigation">
     <li><a href="/$stylist.getId()/newappointment">Make An Appointment With $stylist.getName()</a></li>
     <li><a href="/">Go to Main Page</a></li>
@@ -25,11 +26,11 @@
   <form action="/$stylist.getId()/update" method="post" >
     <label for="updatedName">Change $stylist.getName()'s name here:</label>
     <input id="updatedName" name="updatedName" type="text">
-    <button type="submit" class="btn btn-info">Update</button>
+    <button type="submit" class="btn btn-info update">Update</button>
   </form>
   <br>
   <form action="/$stylist.getId()/delete" class="form-horizontal" method="post">
-    <button type="submit" class="btn btn-danger">DELETE!</button>
+    <button type="submit" class="btn btn-danger delete">DELETE!</button>
   </form>
 #else
   <ul class="navigation">
@@ -40,6 +41,6 @@
   <form action="/$stylist.getId()/update" method="post" >
     <label for="updatedName">Change $stylist.getName()'s name here:</label>
     <input id="updatedName" name="updatedName" type="text">
-    <button type="submit" class="btn btn-info">Update</button>
+    <button type="submit" class="btn btn-info update">Update</button>
   </form>
 #end
