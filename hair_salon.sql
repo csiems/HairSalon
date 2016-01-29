@@ -122,7 +122,7 @@ COPY clients (id, name, stylist_id) FROM stdin;
 -- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('clients_id_seq', 2, true);
+SELECT pg_catalog.setval('clients_id_seq', 1, false);
 
 
 --
@@ -130,7 +130,6 @@ SELECT pg_catalog.setval('clients_id_seq', 2, true);
 --
 
 COPY stylists (id, name) FROM stdin;
-3	Vidal Sassoon
 \.
 
 
@@ -138,7 +137,7 @@ COPY stylists (id, name) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 3, true);
+SELECT pg_catalog.setval('stylists_id_seq', 1, true);
 
 
 --
@@ -155,14 +154,6 @@ ALTER TABLE ONLY clients
 
 ALTER TABLE ONLY stylists
     ADD CONSTRAINT stylists_pkey PRIMARY KEY (id);
-
-
---
--- Name: clients_stylist_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Guest
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_stylist_id_fkey FOREIGN KEY (stylist_id) REFERENCES stylists(id);
 
 
 --
